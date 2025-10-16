@@ -31,8 +31,8 @@ app.use(cookieParser());
 
 
 const allowedOrigins = [
-  "http://localhost:5173",
-  "https://estatefrontend.netlify.app"
+  "https://mern-s.netlify.app/",
+  "https://mern-s.netlify.app/"
 ];
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 
