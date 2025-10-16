@@ -13,7 +13,7 @@ export default function Home() {
   const [rentListings, setRentListings] = useState([]);
   SwiperCore.use([Navigation]);
   console.log(offerListings);
-const API_BASE_URL = "https://mern-project-m0c53u2xl-bassrababar-bytes-projects.vercel.app/api";
+const API_BASE_URL = "https://mern-project-api-iota.vercel.appapi";
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {

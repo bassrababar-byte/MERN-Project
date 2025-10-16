@@ -28,7 +28,7 @@ export default function Listing() {
   const [contact, setContact] = useState(false);
   const params = useParams();
   const { currentUser } = useSelector((state) => state.user);
-const API_BASE_URL = "https://mern-project-m0c53u2xl-bassrababar-bytes-projects.vercel.app/api";
+const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
   useEffect(() => {
     const fetchListing = async () => {
       try {

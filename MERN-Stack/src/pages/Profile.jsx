@@ -27,7 +27,7 @@ export default function Profile() {
   // request.resource.size < 2 * 1024 * 1024 &&
   // request.resource.contentType.matches('image/.*')
 
-const API_BASE_URL = "https://mern-project-m0c53u2xl-bassrababar-bytes-projects.vercel.app/api";
+const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
   useEffect(() => {
     if (file) {
       handleFileUpload(file);
