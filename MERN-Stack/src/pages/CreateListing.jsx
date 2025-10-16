@@ -3,6 +3,7 @@ import {getDownloadURL, getStorage, ref, uploadBytesResumable,} from 'firebase/s
 import { app } from '../firebase';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from "../config";
 
 export default function CreateListing() {
   const { currentUser } = useSelector((state) => state.user);
@@ -117,7 +118,7 @@ export default function CreateListing() {
       });
     }
   };
-
+const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -127,7 +128,7 @@ export default function CreateListing() {
         return setError('Discount price must be lower than regular price');
       setLoading(true);
       setError(false);
-      const res = await fetch('/api/listing/create', {
+      const res = await fetch('${API_BASE_URL}/listing/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

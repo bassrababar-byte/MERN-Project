@@ -15,6 +15,7 @@ import {
   FaShare,
 } from 'react-icons/fa';
 import Contact from '../components/Contact';
+import { API_BASE_URL } from "../config";
 
 // https://sabe.io/blog/javascript-format-numbers-commas#:~:text=The%20best%20way%20to%20format,format%20the%20number%20with%20commas.
 
@@ -27,12 +28,12 @@ export default function Listing() {
   const [contact, setContact] = useState(false);
   const params = useParams();
   const { currentUser } = useSelector((state) => state.user);
-
+const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
   useEffect(() => {
     const fetchListing = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/api/listing/get/${params.listingId}`);
+        const res = await fetch(`${API_BASE_URL}/listing/get/${params.listingId}`);
         const data = await res.json();
         if (data.success === false) {
           setError(true);

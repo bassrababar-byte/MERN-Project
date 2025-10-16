@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import OAuth from '../components/OAuth';
+import { API_BASE_URL } from "../config";
 
 
 
@@ -9,6 +10,7 @@ export default function SignUp() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+ const API_BASE_URL =  "https://mern-project-api-iota.vercel.app/api";
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -19,7 +21,7 @@ export default function SignUp() {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await fetch('/api/auth/signup', {
+      const res = await fetch('${API_BASE_URL}/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

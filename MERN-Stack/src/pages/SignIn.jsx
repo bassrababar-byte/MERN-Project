@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInStart, signInSuccess, signInFailure, } from '../redux/user/userSlice';
 import OAuth from '../components/OAuth';
+import { API_BASE_URL } from "../config";
 
 
 
@@ -11,6 +12,7 @@ export default function SignIn() {
   const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+const API_BASE_URL =  "https://mern-project-api-iota.vercel.app/api";
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -21,7 +23,7 @@ export default function SignIn() {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await fetch('/api/auth/signin', {
+      const res = await fetch('${API_BASE_URL}/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

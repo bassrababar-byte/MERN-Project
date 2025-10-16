@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { API_BASE_URL } from "../config";
 
 export default function Contact({ listing }) {
   const [landlord, setLandlord] = useState(null);
@@ -7,11 +8,11 @@ export default function Contact({ listing }) {
   const onChange = (e) => {
     setMessage(e.target.value);
   };
-
+const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
   useEffect(() => {
     const fetchLandlord = async () => {
       try {
-        const res = await fetch(`/api/user/${listing.userRef}`);
+        const res = await fetch(`${API_BASE_URL}/user/${listing.userRef}`);
         const data = await res.json();
         setLandlord(data);
       } catch (error) {
