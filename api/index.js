@@ -1,12 +1,12 @@
 import express from 'express';
-import mongoose, { Mongoose } from 'mongoose';
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
 import listingRouter from './routes/listing.route.js';
-
+import cors from "cors";
 
 
 
@@ -30,6 +30,11 @@ app.use(express.json());
 app.use(cookieParser());
 
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://estatefrontend.netlify.app"
+];
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 
 
 //routes
@@ -39,14 +44,14 @@ app.use('/api/listing', listingRouter);
 
 
 
-app.get('/api/test', async (req, res) => {
-  try {
-    const data = await MongooseModel.find();
-    res.status(200).json(data);
-  }catch (error) {
-    res.status(500).json({ message: 'Error fetching data', error });
-  }
-});
+// app.get('/api/test', async (req, res) => {
+//   try {
+//     const data = await MongooseModel.find();
+//     res.status(200).json(data);
+//   }catch (error) {
+//     res.status(500).json({ message: 'Error fetching data', error });
+//   }
+// });
 
 
 
@@ -63,11 +68,8 @@ app.use((err, req, res, next) => {
 });
 
 
-// app.listen(3000, () => {
-//     console.log("Server is running on port 3000");
-// });
 
-
+// root route
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
