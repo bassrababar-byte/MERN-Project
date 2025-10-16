@@ -10,19 +10,6 @@ import cors from "cors";
 
 
 
-let isConnected = false;
-//new connection for vercel
-async function connectToMongoDB() {
-  try{
-    await mongoose.connect(process.env.MONGO);
-    isConnected = true;
-    console.log("connected to MongoDB");
-  }catch (error) {
-    console.error("Error connecting to MongoDB:", error);
-  }
-}
-
-
 
 const app = express();
 
@@ -44,42 +31,33 @@ app.use('/api/listing', listingRouter);
 
 
 
-app.get('/api/test', async (req, res) => {
-  try {
-    const data = await MongooseModel.find();
-    res.status(200).json(data);
-  }catch (error) {
-    res.status(500).json({ message: 'Error fetching data', error });
-  }
+// Health check
+app.get("/api/health", (req, res) => {
+  res.json({ success: true, message: "Backend + DB alive 🚀" });
 });
 
+// Root route
+app.get("/", (req, res) => res.send("Backend is running!"));
 
 
 
-//middleware
+// Global error handler
 app.use((err, req, res, next) => {
-  const statusCode = err.statusCode || 500;
-  const message = err.message || 'Internal Server Error';
-  return res.status(statusCode).json({
+  console.error("Error:", err.message || err);
+  res.status(err.statusCode || 500).json({
     success: false,
-    statusCode,
-    message,
+    message: err.message || "Internal Server Error",
   });
 });
 
+// DB connect
 
-
-// root route
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
-
-//add new middleware for deploy on vercel
-app.use((req, res, next) => {
-  if (!isConnected){
-    connectToMongoDB();
-  }
-  next();
+mongoose.connect(process.env.MONGO, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
+.then(() => console.log("MongoDB connected ✅"))
+.catch(err => console.error("MongoDB connection failed ❌", err));
 
-export default app;
+// 👇 IMPORTANT: export app (don’t call app.listen)
+export default app; 
