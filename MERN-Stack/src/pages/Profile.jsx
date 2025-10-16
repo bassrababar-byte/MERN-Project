@@ -27,7 +27,7 @@ export default function Profile() {
   // request.resource.size < 2 * 1024 * 1024 &&
   // request.resource.contentType.matches('image/.*')
 
-const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
+const API_BASE_URL = "https://mern-project-api-iota.vercel.app";
   useEffect(() => {
     if (file) {
       handleFileUpload(file);
@@ -66,7 +66,7 @@ const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`${API_BASE_URL}/user/update/${currentUser._id}`, {
+      const res = await fetch(`/${API_BASE_URL}/user/update/${currentUser._id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`${API_BASE_URL}/user/delete/${currentUser._id}`, {
+      const res = await fetch(`/${API_BASE_URL}/user/delete/${currentUser._id}`, {
         method: 'DELETE',
       });
       const data = await res.json();
@@ -106,7 +106,7 @@ const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch('${API_BASE_URL}/auth/signout');
+      const res = await fetch('/${API_BASE_URL}/auth/signout');
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
@@ -121,7 +121,7 @@ const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
   const handleShowListings = async () => {
     try {
       setShowListingsError(false);
-      const res = await fetch(`${API_BASE_URL}/user/listings/${currentUser._id}`);
+      const res = await fetch(`/${API_BASE_URL}/user/listings/${currentUser._id}`);
       const data = await res.json();
       if (data.success === false) {
         setShowListingsError(true);
@@ -136,7 +136,7 @@ const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
 
   const handleListingDelete = async (listingId) => {
     try {
-      const res = await fetch(`${API_BASE_URL}/listing/delete/${listingId}`, {
+      const res = await fetch(`/${API_BASE_URL}/listing/delete/${listingId}`, {
         method: 'DELETE',
       });
       const data = await res.json();

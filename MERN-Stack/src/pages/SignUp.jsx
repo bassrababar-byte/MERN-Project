@@ -10,7 +10,7 @@ export default function SignUp() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
- const API_BASE_URL =  "https://mern-project-api-iota.vercel.app/api";
+ const API_BASE_URL =  "https://mern-project-api-iota.vercel.app";
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -21,7 +21,7 @@ export default function SignUp() {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await fetch('${API_BASE_URL}/auth/signup', {
+      const res = await fetch('/${API_BASE_URL}/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

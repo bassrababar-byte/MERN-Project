@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://mern-project-api-iota.vercel.app/',
+        target: 'https://mern-project-api-iota.vercel.app',
         secure: false,
       },
     },
