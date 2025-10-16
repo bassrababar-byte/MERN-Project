@@ -1,5 +1,5 @@
 import express from 'express';
-import mongoose from 'mongoose';
+import mongoose, { Mongoose } from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 import userRouter from './routes/user.route.js';
@@ -36,6 +36,18 @@ app.use(cookieParser());
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/listing', listingRouter);
+
+
+
+app.get('/api/test', async (req, res) => {
+  try {
+    const data = await MongooseModel.find();
+    res.status(200).json(data);
+  }catch (error) {
+    res.status(500).json({ message: 'Error fetching data', error });
+  }
+});
+
 
 
 
