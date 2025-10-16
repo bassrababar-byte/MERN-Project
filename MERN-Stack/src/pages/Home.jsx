@@ -13,11 +13,11 @@ export default function Home() {
   const [rentListings, setRentListings] = useState([]);
   SwiperCore.use([Navigation]);
   console.log(offerListings);
-const API_BASE_URL = "https://mern-project-api-iota.vercel.app";
+const API_BASE_URL = "https://mern-project-m0c53u2xl-bassrababar-bytes-projects.vercel.app/api";
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
-        const res = await fetch('/${API_BASE_URL}/listing/get?offer=true&limit=4');
+        const res = await fetch('${API_BASE_URL}/listing/get?offer=true&limit=4');
         const data = await res.json();
         setOfferListings(data);
         fetchRentListings();
@@ -27,7 +27,7 @@ const API_BASE_URL = "https://mern-project-api-iota.vercel.app";
     };
     const fetchRentListings = async () => {
       try {
-        const res = await fetch('/${API_BASE_URL}/listing/get?type=rent&limit=4');
+        const res = await fetch('${API_BASE_URL}/listing/get?type=rent&limit=4');
         const data = await res.json();
         setRentListings(data);
         fetchSaleListings();
@@ -38,7 +38,7 @@ const API_BASE_URL = "https://mern-project-api-iota.vercel.app";
 
     const fetchSaleListings = async () => {
       try {
-        const res = await fetch('/${API_BASE_URL}/listing/get?type=sale&limit=4');
+        const res = await fetch('${API_BASE_URL}/listing/get?type=sale&limit=4');
         const data = await res.json();
         setSaleListings(data);
       } catch (error) {

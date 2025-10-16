@@ -12,7 +12,7 @@ export default function SignIn() {
   const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-const API_BASE_URL =  "https://mern-project-api-iota.vercel.app";
+const API_BASE_URL =  "https://mern-project-m0c53u2xl-bassrababar-bytes-projects.vercel.app/api";
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -23,7 +23,7 @@ const API_BASE_URL =  "https://mern-project-api-iota.vercel.app";
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await fetch('/${API_BASE_URL}/auth/signin', {
+      const res = await fetch('${API_BASE_URL}/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

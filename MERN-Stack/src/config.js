@@ -1,1 +1,1 @@
-export const API_BASE_URL = "https://mern-project-api-iota.vercel.app";
+export const API_BASE_URL = "https://mern-project-m0c53u2xl-bassrababar-bytes-projects.vercel.app/api";

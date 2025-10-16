@@ -28,12 +28,12 @@ export default function Listing() {
   const [contact, setContact] = useState(false);
   const params = useParams();
   const { currentUser } = useSelector((state) => state.user);
-const API_BASE_URL = "https://mern-project-api-iota.vercel.app";
+const API_BASE_URL = "https://mern-project-m0c53u2xl-bassrababar-bytes-projects.vercel.app/api";
   useEffect(() => {
     const fetchListing = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/${API_BASE_URL}/listing/get/${params.listingId}`);
+        const res = await fetch(`${API_BASE_URL}/listing/get/${params.listingId}`);
         const data = await res.json();
         if (data.success === false) {
           setError(true);
