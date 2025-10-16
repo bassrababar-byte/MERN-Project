@@ -51,10 +51,14 @@ app.use((err, req, res, next) => {
 });
 
 
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+});
 
-// app.get("/", (req, res) => {
-//   res.send("API is running...");
-// });
+
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
 
 //add new middleware for deploy on vercel
 app.use((req, res, next) => {
