@@ -33,9 +33,9 @@ app.use(cookieParser());
 
 
 //routes
-app.use('/api/user', userRouter);
-app.use('/api/auth', authRouter);
-app.use('/api/listing', listingRouter);
+app.use('https://mern-project-api-iota.vercel.app/api/user', userRouter);
+app.use('https://mern-project-api-iota.vercel.app/api/auth', authRouter);
+app.use('https://mern-project-api-iota.vercel.app/api/listing', listingRouter);
 
 
 
