@@ -33,7 +33,7 @@ app.use('/api/listing', listingRouter);
 
 // Health check
 app.get("/api/health", (req, res) => {
-  res.json({ success: true, message: "Backend + DB alive 🚀" });
+  res.json({ success: true, message: "Backend + DB alive" });
 });
 
 // Root route
@@ -59,5 +59,5 @@ mongoose.connect(process.env.MONGO, {
 .then(() => console.log("MongoDB connected ✅"))
 .catch(err => console.error("MongoDB connection failed ❌", err));
 
-// 👇 IMPORTANT: export app (don’t call app.listen)
+//  IMPORTANT: export app (don’t call app.listen)
 export default app; 
