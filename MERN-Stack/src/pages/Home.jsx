@@ -17,7 +17,7 @@ const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
-        const res = await fetch('${API_BASE_URL}/listing/get?offer=true&limit=4');
+        const res = await fetch(`${API_BASE_URL}/listing/get?offer=true&limit=4`);
         const data = await res.json();
         setOfferListings(data);
         fetchRentListings();
@@ -27,7 +27,7 @@ const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
     };
     const fetchRentListings = async () => {
       try {
-        const res = await fetch('${API_BASE_URL}/listing/get?type=rent&limit=4');
+        const res = await fetch(`${API_BASE_URL}/listing/get?type=rent&limit=4`);
         const data = await res.json();
         setRentListings(data);
         fetchSaleListings();
@@ -38,7 +38,7 @@ const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
 
     const fetchSaleListings = async () => {
       try {
-        const res = await fetch('${API_BASE_URL}/listing/get?type=sale&limit=4');
+        const res = await fetch(`${API_BASE_URL}/listing/get?type=sale&limit=4`);
         const data = await res.json();
         setSaleListings(data);
       } catch (error) {
