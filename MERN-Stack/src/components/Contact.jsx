@@ -8,7 +8,7 @@ export default function Contact({ listing }) {
   const onChange = (e) => {
     setMessage(e.target.value);
   };
-const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
+
   useEffect(() => {
     const fetchLandlord = async () => {
       try {

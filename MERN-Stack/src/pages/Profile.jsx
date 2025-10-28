@@ -27,7 +27,7 @@ export default function Profile() {
   // request.resource.size < 2 * 1024 * 1024 &&
   // request.resource.contentType.matches('image/.*')
 
-const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
+
   useEffect(() => {
     if (file) {
       handleFileUpload(file);
@@ -106,7 +106,7 @@ const API_BASE_URL = "https://mern-project-api-iota.vercel.app/api";
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch('${API_BASE_URL}/auth/signout');
+      const res = await fetch(`${API_BASE_URL}/auth/signout`);
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
