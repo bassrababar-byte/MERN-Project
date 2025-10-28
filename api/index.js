@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://mern-s.netlify.app"
+  "https://mern-stk.netlify.app"
 ];
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 
