@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://mern-stk.netlify.app"
+  "https://mern-project-frontend-three.vercel.app"
 ];
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 
