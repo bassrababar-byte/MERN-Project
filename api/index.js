@@ -54,7 +54,10 @@ app.use((err, req, res, next) => {
 
 mongoose.connect(process.env.MONGO)
 .then(() => console.log("MongoDB connected ✅"))
-.catch(err => console.error("MongoDB connection failed ❌", err));
+  .catch(err => {
+    console.error("❌ MongoDB connection failed:", err.message);
+    process.exit(1); // Exit app if DB connection fails
+  });
 
 //  IMPORTANT: export app (don’t call app.listen)
 export default app; 
