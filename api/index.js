@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://wonderful-treacle-1935dc.netlify.app"
+  "https://mern-s.netlify.app"
 ];
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 
